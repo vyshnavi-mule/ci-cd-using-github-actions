@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>e7037c1f-4f92-4501-9cca-05b298456d88</groupId>
-	<artifactId>ci-cd-using-github-actions-app2</artifactId>
+	<artifactId>ci-cd-using-github-actions-app3</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>mule-application</packaging>
 
@@ -38,7 +38,7 @@
 						<target>Cloudhub-US-East-2</target>
 						<muleVersion>4.11.0</muleVersion>
 						<server>Repository</server>
-						<applicationName>ci-cd-using-github-actions-app2</applicationName>
+						<applicationName>ci-cd-using-github-actions-app3</applicationName>
 						<replicas>1</replicas>
 						<vCores>0.1</vCores>
 						<properties>
