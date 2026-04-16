@@ -36,7 +36,6 @@ jobs:
         fi
         echo "---Deploying to ${{vars.MULE_ENV}} environment.---"
       
-        run: mvn clean package --file pom.xml --settings .maven/settings.xml
     - name: Build application
       run: mvn clean package --file pom.xml --settings .maven/settings.xml
 
