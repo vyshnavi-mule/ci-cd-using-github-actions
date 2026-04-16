@@ -38,7 +38,7 @@
 						<target>Cloudhub-US-East-2</target>
 						<muleVersion>4.11.0</muleVersion>
 						<server>Repository</server>
-						<applicationName>ci-cd-using-github-actions</applicationName>
+						<applicationName>ci-cd-using-github-actions-app</applicationName>
 						<replicas>1</replicas>
 						<vCores>0.1</vCores>
 						<properties>
