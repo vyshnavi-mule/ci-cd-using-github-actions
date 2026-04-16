@@ -37,16 +37,16 @@ jobs:
         echo "---Deploying to ${{vars.MULE_ENV}} environment.---"
       
     - name: Build application
-      run: mvn clean package --file pom.xml --settings .maven/settings.xml
+      run: mvn clean package --file pom.xml --settings settings.xml
 
     - name: Publish to Anypoint Exchange
       if: github.event_name == 'push' && github.ref_name == 'dev'
-      run: mvn deploy -DskipMuleDeploy -Dclient_id=${{ vars.MULE_CLIENT_ID }} -Dclient_secret=${{ secrets.MULE_CLIENT_SECRET }} --file pom.xml --settings .maven/settings.xml
+      run: mvn deploy -DskipMuleDeploy -Dclient_id=${{ vars.MULE_CLIENT_ID }} -Dclient_secret=${{ secrets.MULE_CLIENT_SECRET }} --file pom.xml --settings settings.xml
 
 
     - name: Deploy to CloudHub
       if: github.event_name == 'push'
-      run: mvn deploy -DmuleDeploy -Dmule.env=${{ vars.MULE_ENV }} -Dclient_id=${{ vars.MULE_CLIENT_ID }} -Dclient_secret=${{ secrets.MULE_CLIENT_SECRET }} -Dmule.instance=${{vars.MULE_INSTANCE}} --file pom.xml --settings .maven/settings.xml
+      run: mvn deploy -DmuleDeploy -Dmule.env=${{ vars.MULE_ENV }} -Dclient_id=${{ vars.MULE_CLIENT_ID }} -Dclient_secret=${{ secrets.MULE_CLIENT_SECRET }} -Dmule.instance=${{vars.MULE_INSTANCE}} --file pom.xml --settings settings.xml
 
     - name: Deployment Summary
       if: success()
