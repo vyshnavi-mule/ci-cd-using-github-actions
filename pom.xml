@@ -3,11 +3,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>e7037c1f-4f92-4501-9cca-05b298456d88</groupId>
-	<artifactId>ci-cd-using-github-actions-app3</artifactId>
+	<artifactId>ci-cd-using-jenkins-app</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>mule-application</packaging>
 
-	<name>ci-cd-using-github-actions1</name>
+	<name>ci-cd-using-jenkins-app</name>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -34,19 +34,13 @@
 					<cloudhub2Deployment>
 						<uri>https://anypoint.mulesoft.com</uri>
 						<provider>MC</provider>
-						<environment>${mule.env}</environment>
+						<environment>${env}</environment>
 						<target>Cloudhub-US-East-2</target>
 						<muleVersion>4.11.0</muleVersion>
 						<server>Repository</server>
-						<applicationName>ci-cd-using-github-actions-app3</applicationName>
+						<applicationName>ci-cd-using-jenkins-app</applicationName>
 						<replicas>1</replicas>
 						<vCores>0.1</vCores>
-						<properties>
-							<mule.env>${mule.env}</mule.env>
-							<mule.instance>${mule.instance}</mule.instance>
-							<anypoint.platform.client_id>${client_id}</anypoint.platform.client_id>
-							<anypoint.platform.client_secret>${client_secret}</anypoint.platform.client_secret>
-						</properties>
 					</cloudhub2Deployment>
 				</configuration>
 			</plugin>
@@ -72,13 +66,19 @@
 			<version>1.11.7</version>
 			<classifier>mule-plugin</classifier>
 		</dependency>
+		<dependency>
+			<groupId>org.mule.connectors</groupId>
+			<artifactId>mule-vm-connector</artifactId>
+			<version>2.0.1</version>
+			<classifier>mule-plugin</classifier>
+		</dependency>
 	</dependencies>
 
-	<repositories>
+		<repositories>
 		<repository>
-			<id>anypoint-exchange-v3</id>
-			<name>Anypoint Exchange</name>
-			<url>https://maven.anypoint.mulesoft.com/api/v3/maven</url>
+			<id>Repository</id>
+			<name>Private Exchange repository</name>
+			<url>https://maven.anypoint.mulesoft.com/api/v3/organizations/${project.groupId}/maven</url>
 			<layout>default</layout>
 		</repository>
 		<repository>
@@ -88,9 +88,9 @@
 			<layout>default</layout>
 		</repository>
 		<repository>
-			<id>Repository</id>
-			<name>Private Exchange repository</name>
-			<url>https://maven.anypoint.mulesoft.com/api/v3/organizations/${project.groupId}/maven</url>
+			<id>anypoint-exchange-v3</id>
+			<name>Anypoint Exchange V3</name>
+			<url>https://maven.anypoint.mulesoft.com/api/v3/maven</url>
 			<layout>default</layout>
 		</repository>
 	</repositories>
